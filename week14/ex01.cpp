@@ -1,4 +1,3 @@
-[ÇÁ·Î±×·¥ ¼Ò½º]
 #include <iostream>
 #include <string>
 #include <map>
@@ -19,15 +18,15 @@ public:
 	string getAuthor() { return author; }
 	int getYear() { return year; }
 	void show() {
-		cout << year << "³âµµ, " << title << ", " << author << endl;
+		cout << year << "ë…„ë„, " << title << ", " << author << endl;
 	}
 };
 
 class BookManager {
-	vector<Book*> v; //Book°´Ã¼¸¦ ÀúÀåÇÏ±â À§ÇÑ vector °´Ã¼ »ı¼º
-	void searchByAuthor(); //ÀúÀÚ·Î °Ë»ö
-	void searchByYear(); //¿¬µµ·Î °Ë»ö
-	void bookIn(); //º¤ÅÍ¿¡ Book Á¤º¸ ÀúÀå
+	vector<Book*> v; //Bookê°ì²´ë¥¼ ì €ì¥í•˜ê¸° ìœ„í•œ vector ê°ì²´ ìƒì„±
+	void searchByAuthor(); //ì €ìë¡œ ê²€ìƒ‰
+	void searchByYear(); //ì—°ë„ë¡œ ê²€ìƒ‰
+	void bookIn(); //ë²¡í„°ì— Book ì •ë³´ ì €ì¥
 	void finish();
 public:
 	void run();
@@ -37,26 +36,26 @@ void BookManager::bookIn() {
 	int year;
 	string title, author;
 	Book* ip;
-	cout << "ÀÔ°íÇÒ Ã¥À» ÀÔ·ÂÇÏ¼¼¿ä. ³âµµ¿¡ -1À» ÀÔ·ÂÇÏ¸é Á¾·áÇÕ´Ï´Ù." << endl;
+	cout << "ì…ê³ í•  ì±…ì„ ì…ë ¥í•˜ì„¸ìš”. ë…„ë„ì— -1ì„ ì…ë ¥í•˜ë©´ ì¢…ë£Œí•©ë‹ˆë‹¤." << endl;
 	while (1) {
-		cout << "³âµµ>>";
+		cout << "ë…„ë„>>";
 		cin >> year;
 		cin.ignore(1, '\n'); 
 		if (year == -1)
 			break;
-		cout << "Ã¥ÀÌ¸§>>";
+		cout << "ì±…ì´ë¦„>>";
 		getline(cin, title);
-		cout << "ÀúÀÚ>>";
+		cout << "ì €ì>>";
 		cin >> author;
-		ip = new Book(title, author, year); //ÀÔ·Â ¹ŞÀº Á¤º¸¸¦ BookÀÇ ÁÖ¼Ò¿¡ ÀúÀå
-		v.push_back(ip); //ÁÖ¼Ò¸¦ vector¿¡ »ğÀÔ
+		ip = new Book(title, author, year); //ì…ë ¥ ë°›ì€ ì •ë³´ë¥¼ Bookì˜ ì£¼ì†Œì— ì €ì¥
+		v.push_back(ip); //ì£¼ì†Œë¥¼ vectorì— ì‚½ì…
 	}
-	cout << "ÃÑ ÀÔ°íµÈ Ã¥Àº " << v.size() << "±ÇÀÔ´Ï´Ù." << endl;
+	cout << "ì´ ì…ê³ ëœ ì±…ì€ " << v.size() << "ê¶Œì…ë‹ˆë‹¤." << endl;
 }
 
 void BookManager::searchByAuthor() {
 	string name;
-	cout << "°Ë»öÇÏ°íÀÚ ÇÏ´Â ÀúÀÚÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä>>";
+	cout << "ê²€ìƒ‰í•˜ê³ ì í•˜ëŠ” ì €ìì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”>>";
 	cin >> name;
 	for (int i = 0; i < v.size(); i++) {
 		if (v[i]->getAuthor() == name)
@@ -66,7 +65,7 @@ void BookManager::searchByAuthor() {
 
 void BookManager::searchByYear() {
 	int year;
-	cout << "°Ë»öÇÏ°íÀÚ ÇÏ´Â ³âµµ¸¦ ÀÔ·ÂÇÏ¼¼¿ä>>";
+	cout << "ê²€ìƒ‰í•˜ê³ ì í•˜ëŠ” ë…„ë„ë¥¼ ì…ë ¥í•˜ì„¸ìš”>>";
 	cin >> year;
 	for (int i = 0; i < v.size(); i++) {
 		if (v[i]->getYear() == year)
@@ -77,16 +76,16 @@ void BookManager::searchByYear() {
 
 void BookManager::finish() {
 	for (int i = 0; i < v.size(); i++) {
-		cout << v[i]->getAuthor() << " ¸Ş¸ğ¸® ¹İ³³ ¿Ï·á" << endl;
+		cout << v[i]->getAuthor() << " ë©”ëª¨ë¦¬ ë°˜ë‚© ì™„ë£Œ" << endl;
 		delete v[i];
 	}
 }
 
 void BookManager::run() {
-	bookIn(); //ÀÔ°í
-	searchByAuthor(); //ÀúÀÚ·Î °Ë»ö
-	searchByYear(); //³âµµ·Î °Ë»ö
-	finish(); //¸Ş¸ğ¸®¹İ³³
+	bookIn(); //ì…ê³ 
+	searchByAuthor(); //ì €ìë¡œ ê²€ìƒ‰
+	searchByYear(); //ë…„ë„ë¡œ ê²€ìƒ‰
+	finish(); //ë©”ëª¨ë¦¬ë°˜ë‚©
 }
 
 int main(){
