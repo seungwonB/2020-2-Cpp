@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-using namespace std;
+using namespace std; 
 
 class Book {
 	string title;
@@ -12,7 +12,7 @@ public:
 		this->price = price;
 	}
 	void show() {
-		cout << title << ' ' << price << "¿ø " << pages << " ÆäÀÌÁö" << endl;
+		cout << title << ' ' << price << "ì› " << pages << " í˜ì´ì§€" << endl;
 	}
 	string getTitle() {
 		return title;
@@ -25,53 +25,53 @@ public:
 };
 
 Book& Book::operator+=(int op) {
-	price = price + op; //±âÁ¸ price¿¡ ¸Å°³º¯¼ö·Î ¹ŞÀº op¸¦ ´õÇÔ
-	return *this; //ÇÕÇÑ °á°ú ¸®ÅÏ
+	price = price + op; //ê¸°ì¡´ priceì— ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ opë¥¼ ë”í•¨
+	return *this; //í•©í•œ ê²°ê³¼ ë¦¬í„´
 }
 
 Book& Book::operator-= (int op) {
-	price = price - op; //±âÁ¸ price¿¡ ¸Å°³º¯¼ö·Î ¹ŞÀº op¸¦ »­
-	return *this; //»« °á°ú ¸®ÅÏ
+	price = price - op; //ê¸°ì¡´ priceì— ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ opë¥¼ ëºŒ
+	return *this; //ëº€ ê²°ê³¼ ë¦¬í„´
 }
 
 bool Book::operator==(int price) {
-	if (this->price == price)  //±âÁ¸ price¿Í ¸Å°³º¯¼ö·Î ¹ŞÀº price°¡ °°ÀºÁö ºñ±³ÇÏ¿©
-		return true; //°°À¸¸é true
+	if (this->price == price)  //ê¸°ì¡´ priceì™€ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ priceê°€ ê°™ì€ì§€ ë¹„êµí•˜ì—¬
+		return true; //ê°™ìœ¼ë©´ true
 	else  
-		return false; //´Ù¸£¸é false
+		return false; //ë‹¤ë¥´ë©´ false
 }
 
 bool Book::operator==(string title) {
-	if (this->title == title) //±âÁ¸ title¿Í ¸Å°³º¯¼ö·Î ¹ŞÀº price°¡ °°ÀºÁö ºñ±³ÇÏ¿©
-		return true; //°°À¸¸é true
+	if (this->title == title) //ê¸°ì¡´ titleì™€ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ priceê°€ ê°™ì€ì§€ ë¹„êµí•˜ì—¬
+		return true; //ê°™ìœ¼ë©´ true
 	else
-		return false; //´Ù¸£¸é false
+		return false; //ë‹¤ë¥´ë©´ false
 }
 
 bool Book::operator==(Book op) {
-	if (title == op.title && price == op.price && pages == op.pages) //°´Ã¼°¡ °°ÀºÁö ºñ±³
+	if (title == op.title && price == op.price && pages == op.pages) //ê°ì²´ê°€ ê°™ì€ì§€ ë¹„êµ
 		return true;
 	else
 		return false;
 }
 
 int main() {
-	Book a("Ã»Ãá", 20000, 300);
-	Book b("¹Ì·¡", 30000, 500);
-	a += 500; //Ã¥ aÀÇ °¡°İ 500¿ø Áõ°¡
-	b -= 500; //Ã¥ bÀÇ °¡°İ 500¿ø °¨¼Ò
+	Book a("ì²­ì¶˜", 20000, 300);
+	Book b("ë¯¸ë˜", 30000, 500);
+	a += 500; //ì±… aì˜ ê°€ê²© 500ì› ì¦ê°€
+	b -= 500; //ì±… bì˜ ê°€ê²© 500ì› ê°ì†Œ
 	a.show();
 	b.show();
 
-	Book c("¸íÇ° C++", 30000, 500);
-	Book d("°íÇ° C++", 30000, 500);
-	if (c == 30000) //price ºñ±³
-		cout << "Á¤°¡ 30000¿ø" << endl; 
-	if (c == "¸íÇ° C++") //title ºñ±³
-		cout << "¸íÇ° C++ÀÔ´Ï´Ù." << endl;
-	if (c == d) //¸ğµÎ ºñ±³
-		cout << "µÎ Ã¥ÀÌ °°Àº Ã¥ÀÔ´Ï´Ù. " << endl;
+	Book c("ëª…í’ˆ C++", 30000, 500);
+	Book d("ê³ í’ˆ C++", 30000, 500);
+	if (c == 30000) //price ë¹„êµ
+		cout << "ì •ê°€ 30000ì›" << endl; 
+	if (c == "ëª…í’ˆ C++") //title ë¹„êµ
+		cout << "ëª…í’ˆ C++ì…ë‹ˆë‹¤." << endl;
+	if (c == d) //ëª¨ë‘ ë¹„êµ
+		cout << "ë‘ ì±…ì´ ê°™ì€ ì±…ì…ë‹ˆë‹¤. " << endl;
 	else
-		cout << "µÎ Ã¥ÀÌ ´Ù¸¥ Ã¥ÀÔ´Ï´Ù." << endl;
+		cout << "ë‘ ì±…ì´ ë‹¤ë¥¸ ì±…ì…ë‹ˆë‹¤." << endl;
 }
 
