@@ -1,14 +1,14 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+ 
 class Account {
 	int money;
 public:
-	Account(int money); //¸Å°³º¯¼ö·Î ¹ŞÀº °ªÀ¸·Î ÀÜ¾× ÃÊ±âÈ­
-	int getMoney(); //ÀÜ¾× ¹İÈ¯
-	void setMoney(int money); //¸Å°³º¯¼ö·Î ¹ŞÀº °ª ¸¸Å­ ÀÜ¾× Áõ°¡
-	void show(); //ÀÜ¾× Ãâ·Â
+	Account(int money); //ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ ê°’ìœ¼ë¡œ ì”ì•¡ ì´ˆê¸°í™”
+	int getMoney(); //ì”ì•¡ ë°˜í™˜
+	void setMoney(int money); //ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ ê°’ ë§Œí¼ ì”ì•¡ ì¦ê°€
+	void show(); //ì”ì•¡ ì¶œë ¥
 };
 
 Account::Account(int money) {
@@ -24,22 +24,22 @@ int Account::getMoney() {
 }
 
 void Account::show() {
-	cout << "ÀÜ¾×ÀÌ " << money << " ¿ø ÀÖ½À´Ï´Ù." << endl;
+	cout << "ì”ì•¡ì´ " << money << " ì› ìˆìŠµë‹ˆë‹¤." << endl;
 }
 
 void increaseBy(Account& a, int money) {
-	a.setMoney(a.getMoney() + money); //°´Ã¼ aÀÇ money¿Í ÀÔ·Â¹ŞÀº money¸¦ ÇÕÇÑ °ªÀ» °´Ã¼ a¿¡ ÀúÀå 
+	a.setMoney(a.getMoney() + money); //ê°ì²´ aì˜ moneyì™€ ì…ë ¥ë°›ì€ moneyë¥¼ í•©í•œ ê°’ì„ ê°ì²´ aì— ì €ì¥ 
 }
 
 int main(){
 	Account account(50000);
 	int money;
-	cout << "ÀÔ±İ Àü ";
+	cout << "ì…ê¸ˆ ì „ ";
 	account.show();
-	cout << "ÀÔ±İ¾× : ";
+	cout << "ì…ê¸ˆì•¡ : ";
 	cin >> money;
 	increaseBy(account, money); 
-	cout << "ÀÔ±İ ÈÄ ";
+	cout << "ì…ê¸ˆ í›„ ";
 	account.show();
 	return 0;
 }
