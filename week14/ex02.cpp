@@ -1,17 +1,17 @@
-[ÇÁ·Î±×·¥ ¼Ò½º]
+[í”„ë¡œê·¸ëž¨ ì†ŒìŠ¤]
 #include <iostream>
 #include <string>
 #include <map>
 #include <vector>
-using namespace std;
+using namespace std; 
 
 template <class T1, class T2, class T3>
 bool search(T1 x, T2 arr[], T3 size) {
 	for (int i = 0; i < size; i++) {
 		if (arr[i] == x)
-			return true; //°°À¸¸é true
+			return true; //ê°™ìœ¼ë©´ true
 	}
-	return false; //´Ù¸£¸é false
+	return false; //ë‹¤ë¥´ë©´ false
 }
 
 int main(){
@@ -19,19 +19,19 @@ int main(){
 	double y[] = { 1.3, 10.9, 8.3, 100.2 };
 	char z[] = { 'c','g','w','x','z','q' };
 	if (search(100, x, 5))
-		cout << "100ÀÌ ¹è¿­ x¿¡ Æ÷ÇÔµÇ¾î ÀÖ´Ù." << endl;
+		cout << "100ì´ ë°°ì—´ xì— í¬í•¨ë˜ì–´ ìžˆë‹¤." << endl;
 	else
-		cout << "100ÀÌ ¹è¿­ x¿¡ Æ÷ÇÔµÇ¾î ÀÖÁö ¾Ê´Ù." << endl;
+		cout << "100ì´ ë°°ì—´ xì— í¬í•¨ë˜ì–´ ìžˆì§€ ì•Šë‹¤." << endl;
 
 	if (search(1.4, x, 4))
-		cout << "1.4°¡ ¹è¿­ y¿¡ Æ÷ÇÔµÇ¾î ÀÖ´Ù." << endl;
+		cout << "1.4ê°€ ë°°ì—´ yì— í¬í•¨ë˜ì–´ ìžˆë‹¤." << endl;
 	else
-		cout << "1.4°¡ ¹è¿­ y¿¡ Æ÷ÇÔµÇ¾î ÀÖÁö ¾Ê´Ù." << endl;
+		cout << "1.4ê°€ ë°°ì—´ yì— í¬í•¨ë˜ì–´ ìžˆì§€ ì•Šë‹¤." << endl;
 
 	if (search('g', z, 6))
-		cout << "g°¡ ¹è¿­ z¿¡ Æ÷ÇÔµÇ¾î ÀÖ´Ù." << endl;
+		cout << "gê°€ ë°°ì—´ zì— í¬í•¨ë˜ì–´ ìžˆë‹¤." << endl;
 	else
-		cout << "g°¡ ¹è¿­ z¿¡ Æ÷ÇÔµÇ¾î ÀÖÁö ¾Ê´Ù." << endl;
+		cout << "gê°€ ë°°ì—´ zì— í¬í•¨ë˜ì–´ ìžˆì§€ ì•Šë‹¤." << endl;
 }
 
 
