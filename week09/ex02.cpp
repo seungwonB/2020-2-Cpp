@@ -1,85 +1,28 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <ctime>
 using namespace std;
 
-class Person {
-	string name;
-public:
-	Person(string name) { this->name = name; }
-	string getName() { return name; }
-	bool go();
-};
+int add(int a[], int size,int b[] = nullptr) { //nullì€ ìƒìˆ˜ 0ê³¼ ê°™ì€ ì˜ë¯¸ë¼ì„œ ê°€ë¦¬í‚¤ê³  ìˆëŠ” ê²Œ ì—†ë‹¤ëŠ” nullptrì´ìš©
+	int sum = 0;
 
-class UpAndDownGame {
-	static int answer; //¸ÂÃç¾ß ÇÒ ´ä, ³­¼ö·Î ÃÊ±âÈ­
-	static int top; //¸ÂÃç¾ß ÇÒ ´äÀÇ ¹üÀ§¿¡¼­ ÃÖ°í°ª
-	static int bottom; //¸ÂÃç¾ß ÇÒ ´äÀÇ ¹üÀ§¿¡¼­ ÃÖÀú°ª
-	static void init(); //³­¼ö¸¦ »ı¼ºÇÏ¿© answerº¯¼ö·Î ÃÊ±âÈ­
-	static void msg(); //top°ú bottm Ãâ·Â
-public:
-	static void run(); //°ÔÀÓ ÁøÇà
-	static bool check(int answer); //top°ú bottomÀ» Á¶ÀıÇÏ°í, Á¤´äÀ» ¸ÂÃß¸é true ¾Æ´Ï¸é false
-};
-
-bool Person::go() {
-	int number;
-	cout << name + ">> ";
-	cin >> number;
-	return UpAndDownGame::check(number);
-}
-//static ¸â¹ö º¯¼öÀÇ ¸Ş¸ğ¸® ÇÒ´çÀÉ À§ÇÑ µğÆúÆ® ¼±¾ğ
-int UpAndDownGame::answer = 0;
-int UpAndDownGame::top = 100;
-int UpAndDownGame::bottom = 1;
-
-void UpAndDownGame::init() { //answer º¯¼ö ·£´ı ÃÊ±âÈ­
-	srand((unsigned)time(0)); //½ÃÀÛÇÒ ¶§¸¶´Ù ´Ù¸¥ ·£´ı¼ö¸¦ ¹ß»ı½ÃÅ°±â À§ÇÑ seed »ı¼º
-	answer = rand() % 100 + 1; //1¿¡¼­ 100»çÀÌÀÇ ·£´ıÇÑ Á¤¼ö ¹ß»ı
-}
-
-void UpAndDownGame::msg() {
-	cout << "´äÀº " << bottom << "°ú " << top << "»çÀÌ¿¡ ÀÖ½À´Ï´Ù." << endl;
-}
-
-void UpAndDownGame::run() { //·çÇÁ¸¦ µ¹¸é¼­ °ÔÀÓÀ» ÁøÇà
-	Person* players[2];
-	string name;
-
-	cout << "Up & Down °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù." << endl;
-	for (int i = 0; i < 2; i++) {
-		cout << "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä >> ";
-		cin >> name;
-		players[i] = new Person(name);
+	for (int i = 0; i < size; i++) {
+		sum += a[i]; // ë°°ì—´ aì˜ ëª¨ë“  ê°’ì˜ í•©
 	}
 
-	init(); //·£´ı ½Ãµå 
+	if (b == nullptr)
+		return sum; // ë°°ì—´ bê°€ ì—†ìœ¼ë©´ aì˜ í•©ë§Œ ë¦¬í„´
 
-	int i = 0;
-	while (true) {
-		msg();
-		if (players[i]->go()) { 
-			cout << players[i]->getName() << "ÀÌ(°¡) ÀÌ°å½À´Ï´Ù!!" << endl;
-			break;
-		}
-		i++; //µÑÀÌ °è¼Ó ¹ø°¥¾Æ °¡¸ç °ÔÀÓ ÁøÇà
-		i = i % 2; //2¸íÀÌ±â¿¡ i%2
+	for (int i = 0; i < size; i++) {
+		sum += b[i]; // ë°°ì—´ bì˜ ëª¨ë“  ê°’ì˜ í•©
 	}
-}
 
-bool UpAndDownGame::check(int a) {
-	if (a < bottom || a > top) return false;
-	if (answer == a) //Á¤´ä°ú ÀÔ·Â¹ŞÀº °ªÀÌ °°À¸¸é true
-		return true;
-	if (a > answer) //ÀÔ·Â¹ŞÀº °ªÀÌ Á¤´äº¸´Ù Å©¸é
-		top = a; //topÀ» a·Î
-	else //ÀÛÀ¸¸é
-		bottom = a; //bottomÀ» a·Î
-	return false;
+	return sum;
 }
 
 int main() {
-	UpAndDownGame::run();
+	int a[] = { 1,2,3,4,5 };
+	int b[] = { 6,7,8,9,10 };
+	int c = add(a, 5); //15
+	int d = add(a, 5, b); //55
+	cout << c << endl << d << endl;
 }
-
